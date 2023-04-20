@@ -1,0 +1,35 @@
+
+version: 2
+
+sources:
+    - name: staging
+      database: service-calls-pipeline-382901 # project
+      schema: service_calls_models # dataset
+      tables: 
+        - name: facts_2022_partitioned
+
+models:
+    - name: stg_service_calls
+      description: >
+        Service request calls made in the city of Toronto
+      columns:
+          - name: Status
+            description: "One of {Initiated, In Progress, Canceled, Closed}"
+          - name: ward_name
+            description: "Municipal electoral ward"
+            tests:
+              - not_null:
+                  severity: warn
+          - name: ward_id
+            description: "Numerical ID for ward name"
+          - name: Service_Request_Type
+            description: Nature of the service call request
+            tests:
+              - not_null:
+                  severity: warn
+          - name: creation_datetime
+            description: "Datetime the service request was logged"
+            tests:
+              - not_null:
+                  severity: warn
+    

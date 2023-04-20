@@ -1,0 +1,13 @@
+
+version: 2
+
+models:
+    - name: requests_by_ward
+      description: >
+        Aggregate summary of most frequent requests by ward
+    # - name: wards_by_request
+    #   description: >
+    #     Aggregate summary of which wards make the most frequent requests, broken down by types
+    - name: requests_by_season
+      description: >
+        Aggregate summary of most frequent request types by season
