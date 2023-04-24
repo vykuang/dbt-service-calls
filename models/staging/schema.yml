@@ -15,6 +15,14 @@ models:
       columns:
           - name: Status
             description: "One of {Initiated, In Progress, Canceled, Closed}"
+            tests:
+              - accepted_values:
+                  values:
+                    - "Initiated"
+                    - "In Progress"
+                    - "Canceled"
+                    - "Closed"
+                  severity: warn
           - name: ward_name
             description: "Municipal electoral ward"
             tests:
@@ -32,4 +40,10 @@ models:
             tests:
               - not_null:
                   severity: warn
+          - name: season
+            description: "Meteorological season, according to the months only"
+            tests:
+              - accepted_values:
+                  values: ['spring', 'summer', 'fall', 'winter']
+    
     
