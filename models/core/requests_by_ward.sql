@@ -2,7 +2,7 @@
 
 with
     w_count as (
-        select ward_name, service_request_type, count(1) as ward_count
+        select ward_name, service_request_type, count(1) as ward_count,
         from {{ ref("stg_service_calls") }}
         where ward_name is not null
         group by ward_name, service_request_type
