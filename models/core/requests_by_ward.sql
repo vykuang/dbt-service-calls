@@ -1,4 +1,4 @@
-{{ config(materialized="table") }}
+{{ config(materialized="table", cluster_by="ward_name") }}
 
 with
     w_count as (
