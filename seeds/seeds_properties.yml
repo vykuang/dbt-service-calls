@@ -5,7 +5,7 @@ seeds:
     description: >
       Lookup table for ward names and their corresponding integer ID
     columns:
-      - name: Ward Number
+      - name: Ward_Number
         description: Integer ID of ward name
-      - name: Ward Name
+      - name: Ward_Name
         description: Ward name

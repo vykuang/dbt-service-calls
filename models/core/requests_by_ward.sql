@@ -18,7 +18,13 @@ with
             ward_count / sum(ward_count) over (partition by ward_name) percentage
         from w_count
     )
-select ward_name, service_request_type, ward_count, round(percentage, 3)
-from w_rank
-where ward_rank < 4
+select
+    w.ward_name,
+    service_request_type,
+    ward_count,
+    ward_rank,
+    round(percentage, 3) as percentage,
+    map.geometry
+from w_rank as w
+join {{ ref("stg_city_wards") }} map on w.ward_name = map.ward_name
 order by ward_name, ward_rank

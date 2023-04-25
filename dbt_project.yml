@@ -43,5 +43,5 @@ seeds:
   service_request_calls:
     ward_id_lookup:
       +column_types:
-        "Ward ID": numeric
-        "Ward Name": string
+        "Ward_Number": numeric
+        "Ward_Name": string
