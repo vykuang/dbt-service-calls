@@ -28,8 +28,15 @@ models:
             tests:
               - not_null:
                   severity: warn
+              - relationships:
+                  field: "Ward Name"
+                  to: ref('ward_id_lookup')
           - name: ward_id
             description: "Numerical ID for ward name"
+            tests:
+              - relationships:
+                  field: "Ward ID"
+                  to: ref('ward_id_lookup')
           - name: Service_Request_Type
             description: Nature of the service call request
             tests:

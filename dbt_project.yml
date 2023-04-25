@@ -36,7 +36,6 @@ models:
     staging:
       materialized: view
 
-
 vars:
   project_id: "service-calls-pipeline-382901"
 

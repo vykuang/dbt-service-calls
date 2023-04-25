@@ -1,6 +1,11 @@
-# version: 2
+version: 2
 
-# seeds:
-#   - name: ward_id_lookup
-#     description: >
-#       Lookup table for ward names and their corresponding integer ID
+seeds:
+  - name: ward_id_lookup
+    description: >
+      Lookup table for ward names and their corresponding integer ID
+    columns:
+      - name: Ward Number
+        description: Integer ID of ward name
+      - name: Ward Name
+        description: Ward name
