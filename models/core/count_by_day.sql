@@ -3,13 +3,12 @@ with daily_count as (
     service_request_type,
     date(creation_datetime) as request_date,
     count(1) daily 
-  FROM {{ ref("stg_service_calls")}}
-  tablesample system (10 percent)
+  FROM {{ ref("stg_service_calls") }}
   group by date(creation_datetime), service_request_type
 )
 SELECT 
   *,
-  sum(daily_count.daily) 
+  sum(daily_count.daily)
   over (
     partition by service_request_type 
     order by request_date

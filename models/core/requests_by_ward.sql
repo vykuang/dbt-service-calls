@@ -12,19 +12,19 @@ with
             ward_name,
             service_request_type,
             ward_count,
-            row_number() over (
-                partition by ward_name order by ward_count desc
+            rank() over (
+                -- ranks wards if partition by type
+                partition by service_request_type order by ward_count desc
             ) ward_rank,
             ward_count / sum(ward_count) over (partition by ward_name) percentage
         from w_count
     )
 select
-    w.ward_name,
+    w.ward_name as ward_name,
     service_request_type,
     ward_count,
     ward_rank,
     round(percentage, 3) as percentage,
-    map.geometry
+    map.geometry as geometry
 from w_rank as w
 join {{ ref("stg_city_wards") }} map on w.ward_name = map.ward_name
-order by ward_name, ward_rank
