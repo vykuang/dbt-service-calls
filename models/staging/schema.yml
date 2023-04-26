@@ -7,6 +7,8 @@ sources:
       schema: service_calls_models # dataset
       tables: 
         - name: facts_2022_partitioned
+        - name: city_wards_map
+      
 
 models:
     - name: stg_service_calls
@@ -28,8 +30,15 @@ models:
             tests:
               - not_null:
                   severity: warn
+              - relationships:
+                  field: Ward_Name
+                  to: ref('ward_id_lookup')
           - name: ward_id
             description: "Numerical ID for ward name"
+            tests:
+              - relationships:
+                  field: Ward_Number
+                  to: ref('ward_id_lookup')
           - name: Service_Request_Type
             description: Nature of the service call request
             tests:
@@ -45,5 +54,16 @@ models:
             tests:
               - accepted_values:
                   values: ['spring', 'summer', 'fall', 'winter']
-    
+    - name: stg_city_wards
+      columns:
+        - name: ward_name
+          tests:
+            - relationships:
+                field: Ward_Name
+                to: ref('ward_id_lookup')
+        - name: ward_id
+          tests:
+            - relationships:
+                field: Ward_Number
+                to: ref('ward_id_lookup')
     

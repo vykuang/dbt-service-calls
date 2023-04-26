@@ -1,4 +1,4 @@
-Ward Number,Ward Name
+Ward_Number,Ward_Name
 1,Etobicoke North
 2,Etobicoke Centre
 3,Etobicoke-Lakeshore
@@ -10,7 +10,7 @@ Ward Number,Ward Name
 9,Davenport
 10,Spadina-Fort York
 11,University-Rosedale
-12,Toronto-St. Paul’s
+12,Toronto-St. Paul's
 13,Toronto Centre
 14,Toronto-Danforth
 15,Don Valley West
@@ -24,4 +24,3 @@ Ward Number,Ward Name
 23,Scarborough North
 24,Scarborough-Guildwood
 25,Scarborough-Rouge Park
-0,NULL

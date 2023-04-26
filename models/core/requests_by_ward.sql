@@ -1,4 +1,4 @@
-{{ config(materialized="table") }}
+{{ config(materialized="table", cluster_by="ward_name") }}
 
 with
     w_count as (
@@ -12,13 +12,19 @@ with
             ward_name,
             service_request_type,
             ward_count,
-            row_number() over (
-                partition by ward_name order by ward_count desc
+            rank() over (
+                -- ranks wards if partition by type
+                partition by service_request_type order by ward_count desc
             ) ward_rank,
             ward_count / sum(ward_count) over (partition by ward_name) percentage
         from w_count
     )
-select ward_name, service_request_type, ward_count, round(percentage, 3)
-from w_rank
-where ward_rank < 4
-order by ward_name, ward_rank
+select
+    w.ward_name as ward_name,
+    service_request_type,
+    ward_count,
+    ward_rank,
+    round(percentage, 3) as percentage,
+    map.geometry as geometry
+from w_rank as w
+join {{ ref("stg_city_wards") }} map on w.ward_name = map.ward_name

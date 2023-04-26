@@ -36,7 +36,6 @@ models:
     staging:
       materialized: view
 
-
 vars:
   project_id: "service-calls-pipeline-382901"
 
@@ -44,5 +43,5 @@ seeds:
   service_request_calls:
     ward_id_lookup:
       +column_types:
-        "Ward ID": numeric
-        "Ward Name": string
+        "Ward_Number": numeric
+        "Ward_Name": string
