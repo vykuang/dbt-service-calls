@@ -28,7 +28,7 @@ select
     end season,
     *
 from
-    {{ source("staging", "facts_2022_partitioned") }}
+    {{ source("staging", "facts_2023_partitioned") }}
 
     -- dbt build --m <model.sql> --var 'is_test_run: false'
     {% if var("is_test_run", default=true) %} tablesample system(10 percent) {% endif %}

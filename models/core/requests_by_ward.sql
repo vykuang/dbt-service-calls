@@ -15,8 +15,8 @@ with
             rank() over (
                 -- ranks wards if partition by type
                 partition by service_request_type order by ward_count desc
-            ) ward_rank,
-            ward_count / sum(ward_count) over (partition by ward_name) percentage
+            ) as ward_rank,
+            ward_count / sum(ward_count) over (partition by ward_name) as percentage
         from w_count
     )
 select
