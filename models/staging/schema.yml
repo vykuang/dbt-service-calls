@@ -6,7 +6,7 @@ sources:
       database: service-calls-pipeline-382901 # project
       schema: service_calls_models # dataset
       tables: 
-        - name: facts_2022_partitioned
+        - name: facts_2023_partitioned
         - name: city_wards_map
       
 
